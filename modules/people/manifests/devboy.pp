@@ -8,6 +8,11 @@ class people::devboy {
   include onepassword
   include skype
   include slack
+  include git
+
+  git::config::global { 'user.email':
+    value  => 'dominic.graefen@gmail.com'
+  }
   
   include sublime_text_3
   include sublime_text_3::package_control
