@@ -1,12 +1,17 @@
 GITHUBTARBALL
+  remote: boxen/puppet-appcode2
+  specs:
+    appcode2 (1.0.0)
+
+GITHUBTARBALL
   remote: boxen/puppet-boxen
   specs:
-    boxen (3.3.4)
+    boxen (3.3.8)
 
 GITHUBTARBALL
   remote: boxen/puppet-chrome
   specs:
-    chrome (1.0.0)
+    chrome (1.1.2)
 
 GITHUBTARBALL
   remote: boxen/puppet-dnsmasq
@@ -14,59 +19,69 @@ GITHUBTARBALL
     dnsmasq (1.0.1)
 
 GITHUBTARBALL
-  remote: boxen/puppet-foreman
-  specs:
-    foreman (1.0.0)
-
-GITHUBTARBALL
   remote: boxen/puppet-dropbox
   specs:
-    dropbox (1.0.0)
+    dropbox (1.2.0)
 
 GITHUBTARBALL
-  remote: boxen/puppet-emacs
+  remote: boxen/puppet-fish
   specs:
-    emacs (1.0.0)
+    fish (1.0.0)
+
+GITHUBTARBALL
+  remote: boxen/puppet-foreman
+  specs:
+    foreman (1.1.0)
 
 GITHUBTARBALL
   remote: boxen/puppet-gcc
   specs:
-    gcc (2.0.1)
+    gcc (2.0.99)
 
 GITHUBTARBALL
   remote: boxen/puppet-git
   specs:
-    git (1.2.5)
+    git (1.3.7)
 
 GITHUBTARBALL
   remote: boxen/puppet-go
   specs:
-    go (1.0.0)
+    go (2.0.1)
 
 GITHUBTARBALL
   remote: boxen/puppet-homebrew
   specs:
-    homebrew (1.5.1)
+    homebrew (1.6.0)
 
 GITHUBTARBALL
   remote: boxen/puppet-hub
   specs:
-    hub (1.0.3)
+    hub (1.3.0)
 
 GITHUBTARBALL
   remote: boxen/puppet-iterm2
   specs:
-    iterm2 (1.0.0)
+    iterm2 (1.0.6)
+
+GITHUBTARBALL
+  remote: boxen/puppet-java
+  specs:
+    java (1.2.0)
 
 GITHUBTARBALL
   remote: boxen/puppet-nginx
   specs:
-    nginx (1.4.2)
+    nginx (1.4.3)
 
 GITHUBTARBALL
   remote: boxen/puppet-nodejs
   specs:
-    nodejs (3.3.0)
+    nodejs (3.5.0)
+
+GITHUBTARBALL
+  remote: boxen/puppet-onepassword
+  specs:
+    onepassword (1.1.0)
 
 GITHUBTARBALL
   remote: boxen/puppet-openssl
@@ -74,9 +89,14 @@ GITHUBTARBALL
     openssl (1.0.0)
 
 GITHUBTARBALL
+  remote: boxen/puppet-osx
+  specs:
+    osx (2.2.2)
+
+GITHUBTARBALL
   remote: boxen/puppet-phantomjs
   specs:
-    phantomjs (2.0.2)
+    phantomjs (2.1.0)
 
 GITHUBTARBALL
   remote: boxen/puppet-pkgconfig
@@ -94,6 +114,16 @@ GITHUBTARBALL
     ruby (6.7.2)
 
 GITHUBTARBALL
+  remote: boxen/puppet-skype
+  specs:
+    skype (1.0.8)
+
+GITHUBTARBALL
+  remote: boxen/puppet-slack
+  specs:
+    slack (1.0.3)
+
+GITHUBTARBALL
   remote: boxen/puppet-sparrow
   specs:
     sparrow (1.0.0)
@@ -104,21 +134,22 @@ GITHUBTARBALL
     sudo (1.0.0)
 
 GITHUBTARBALL
-<<<<<<< HEAD
   remote: boxen/puppet-vlc
   specs:
-    vlc (1.0.0)
+    vlc (1.0.5)
 
 GITHUBTARBALL
-  remote: cprice-puppet/puppetlabs-inifile
-=======
   remote: boxen/puppet-xquartz
   specs:
-    xquartz (1.1.0)
+    xquartz (1.1.1)
+
+GITHUBTARBALL
+  remote: jozefizso/puppet-sublime_text_3
+  specs:
+    sublime_text_3 (1.0.2)
 
 GITHUBTARBALL
   remote: puppetlabs/puppetlabs-inifile
->>>>>>> a4304d4da64ee750d17c6c6f00fd22214b0bd793
   specs:
     inifile (1.0.0)
 
@@ -128,45 +159,36 @@ GITHUBTARBALL
     stdlib (4.1.0)
 
 DEPENDENCIES
-<<<<<<< HEAD
-  boxen (= 1.2.0)
-  chrome (= 1.0.0)
-  dnsmasq (= 1.0.0)
-  dropbox (= 1.0.0)
-  emacs (= 1.0.0)
-  gcc (= 1.0.0)
-  git (= 1.0.0)
-  homebrew (= 1.1.2)
-  hub (= 1.0.0)
-  inifile (= 0.9.0)
-  iterm2 (= 1.0.0)
-  nginx (= 1.1.0)
-  nodejs (= 1.0.0)
-  nvm (= 1.0.0)
-  ruby (= 3.1.0)
-  sparrow (= 1.0.0)
-  stdlib (= 3.0.0)
-  sudo (= 1.0.0)
-  vlc (= 1.0.0)
-=======
-  boxen (= 3.3.4)
+  appcode2 (= 1.0.0)
+  boxen (= 3.3.8)
+  chrome (= 1.1.2)
   dnsmasq (= 1.0.1)
-  foreman (= 1.0.0)
-  gcc (= 2.0.1)
-  git (= 1.2.5)
-  go (= 1.0.0)
-  homebrew (= 1.5.1)
-  hub (= 1.0.3)
+  dropbox (= 1.2.0)
+  fish (= 1.0.0)
+  foreman (= 1.1.0)
+  gcc (= 2.0.99)
+  git (= 1.3.7)
+  go (= 2.0.1)
+  homebrew (= 1.6.0)
+  hub (= 1.3.0)
   inifile (= 1.0.0)
-  nginx (= 1.4.2)
-  nodejs (= 3.3.0)
+  iterm2 (= 1.0.6)
+  java (= 1.2.0)
+  nginx (= 1.4.3)
+  nodejs (= 3.5.0)
+  onepassword (= 1.1.0)
   openssl (= 1.0.0)
-  phantomjs (= 2.0.2)
+  osx (= 2.2.2)
+  phantomjs (= 2.1.0)
   pkgconfig (= 1.0.0)
   repository (= 2.2.0)
   ruby (= 6.7.2)
+  skype (= 1.0.8)
+  slack (= 1.0.3)
+  sparrow (= 1.0.0)
   stdlib (= 4.1.0)
+  sublime_text_3 (= 1.0.2)
   sudo (= 1.0.0)
-  xquartz (= 1.1.0)
->>>>>>> a4304d4da64ee750d17c6c6f00fd22214b0bd793
+  vlc (= 1.0.5)
+  xquartz (= 1.1.1)
 
