@@ -28,13 +28,14 @@ class people::devboy {
 
   class dotty($ruby_version='system') {
     $dotfiles_dir = "/Users/${::luser}/.dotty/default/dotfiles"
-
-    exec { "rm ${dotfiles_dir}/dotfiles/.DS_Store":
-      cwd => "/Users/${luser}",
-      logoutput => on_failure,
-      provider => 'shell'; 
+    $ds_store_file = "${dotfiles_dir}/dotfiles/.DS_Store"
+    if file_exists($ds_store_file) {
+      exec { "rm ${ds_store_file}":
+        cwd => "/Users/${luser}",
+        logoutput => on_failure,
+        provider => 'shell'; 
+      }
     }
-
     exec { "env -i HOME=\$HOME SSH_AUTH_SOCK=\$SSH_AUTH_SOCK RBENV_VERSION=${ruby_version} sh -c 'source /opt/boxen/env.sh && dotty add dotfiles git@bitbucket.org:devboy/dotfiles.git'":
      cwd => "/Users/${luser}",
      logoutput => on_failure,
@@ -73,9 +74,22 @@ class people::devboy {
   include spotify
   include sublime_text_3
   include sublime_text_3::package_control
-  sublime_text_3::package { 'Emmet':
-    source => 'sergeche/emmet-sublime'
-  }  
+  sublime_text_3::package { 'Theme - itg.flat':
+    source => 'itsthatguy/theme-itg-flat'
+  }
+  sublime_text_3::package { 'SublimePuppet':
+    source => 'russCloak/SublimePuppet'
+  }
+  sublime_text_3::package { 'GitGutter':
+    source => 'jisaacks/GitGutter'
+  }
+
+  file { "/Users/${::luser}/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings":
+    ensure => 'link',
+    target => "/Users/${::luser}/.config/sublimetext3/Preferences.sublime-settings",
+    require => Class['dotty'];
+  }
+
   class { 'intellij':
     edition => 'ultimate',
     version => '12.1.4'
