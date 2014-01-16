@@ -1,33 +1,88 @@
 class people::devboy {
-  include sparrow
+  # DEFAULTS:
+  include fish
+  include git
   include java
+  git::config::global { 'user.email':
+    value  => 'dominic.graefen@gmail.com'
+  }
+
+  # RUBY:
+
+  include ruby
+  $GLOBAL_RUBY = "1.9.3-p448"
+  class { 'ruby::global':
+    version => $GLOBAL_RUBY
+  }
+
+  # ruby::plugin { 'gem-rehash':
+  #   version => 'v1.0.0',
+  #   source  => 'sstephenson/rbenv-gem-rehash'
+  # }
+
+  ruby::gem { "dotty for ${GLOBAL_RUBY}":
+    gem     => 'dotty',
+    ruby    => $GLOBAL_RUBY,
+    version => '~> 0.0.3'
+  }
+
+  class dotty($ruby_version='system') {
+    $dotfiles_dir = "/Users/${::luser}/.dotty/default/dotfiles"
+
+    exec { "rm ${dotfiles_dir}/dotfiles/.DS_Store":
+      cwd => "/Users/${luser}",
+      logoutput => on_failure,
+      provider => 'shell'; 
+    }
+
+    exec { "env -i HOME=\$HOME SSH_AUTH_SOCK=\$SSH_AUTH_SOCK RBENV_VERSION=${ruby_version} sh -c 'source /opt/boxen/env.sh && dotty add dotfiles git@bitbucket.org:devboy/dotfiles.git'":
+     cwd => "/Users/${luser}",
+     logoutput => on_failure,
+     provider => 'shell',
+     creates => $dotfiles_dir,
+     require => [ Class['ruby::global'], 
+                  Ruby::Gem["bundler for ${ruby_version}"], 
+                  Ruby::Gem["dotty for ${ruby_version}"] ];
+    }
+
+    exec { "env -i HOME=\$HOME SSH_AUTH_SOCK=\$SSH_AUTH_SOCK RBENV_VERSION=${ruby_version} sh -c 'source /opt/boxen/env.sh && dotty update && dotty bootstrap'":
+     cwd => "/Users/${luser}",
+     logoutput => on_failure,
+     provider => 'shell',
+     require => [ Class['ruby::global'], 
+                  Ruby::Gem["bundler for ${ruby_version}"], 
+                  Ruby::Gem["dotty for ${ruby_version}"] ];
+    }
+
+  }
+  class { "dotty":
+    ruby_version => $GLOBAL_RUBY
+  }
+
+  # APPS:
+
+  include sparrow
   include chrome
   include dropbox
   include iterm2::dev
   include vlc
   include onepassword
+  include onepassword::chrome
   include skype
   include slack
-  include git
-
-  git::config::global { 'user.email':
-    value  => 'dominic.graefen@gmail.com'
-  }
-  
+  include spotify
   include sublime_text_3
   include sublime_text_3::package_control
-
   sublime_text_3::package { 'Emmet':
     source => 'sergeche/emmet-sublime'
+  }  
+  class { 'intellij':
+    edition => 'ultimate',
+    version => '12.1.4'
   }
-
-  include fish
-
-  # class { 'intellij':
-  #   edition => 'ultimate',
-  #   version => '12.1.4'
-  # }
   include appcode2
+
+  # OSX:
 
   include osx::global::enable_keyboard_control_access
   include osx::dock::2d
