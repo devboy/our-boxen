@@ -3,6 +3,7 @@ class people::devboy {
   include fish
   include git
   include java
+  include vagrant
   git::config::global { 'user.email':
     value  => 'dominic.graefen@gmail.com'
   }
@@ -15,10 +16,9 @@ class people::devboy {
     version => $GLOBAL_RUBY
   }
 
-  # ruby::plugin { 'gem-rehash':
-  #   version => 'v1.0.0',
-  #   source  => 'sstephenson/rbenv-gem-rehash'
-  # }
+  package { 'tree':
+    ensure => present
+  }
 
   ruby::gem { "dotty for ${GLOBAL_RUBY}":
     gem     => 'dotty',
@@ -60,20 +60,29 @@ class people::devboy {
     ruby_version => $GLOBAL_RUBY
   }
 
+  # PROJECTS:
+  include projects::apportable_apportable
+
   # APPS:
 
   include sparrow
+  include virtualbox
   include chrome
   include dropbox
   include iterm2::dev
   include vlc
   include onepassword
-  include onepassword::chrome
+  # include onepassword::chrome
   include skype
   include slack
   include spotify
   include sublime_text_3
   include sublime_text_3::package_control
+
+  class { 'nodejs::global': 
+    version => 'v0.10.21' 
+  }
+
   sublime_text_3::package { 'Theme - itg.flat':
     source => 'itsthatguy/theme-itg-flat'
   }
