@@ -62,6 +62,8 @@ class people::devboy {
 
   # PROJECTS:
   include projects::apportable_apportable
+  include projects::food_blog_ghost
+  include projects::news_blog_ghost
 
   # APPS:
 
