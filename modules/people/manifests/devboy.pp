@@ -30,6 +30,11 @@ class people::devboy {
     version => '~> 0.0.3'
   }
 
+  package { 'CocosBuilder2':
+    provider => 'compressed_app',
+    source   => "http://www.cocosbuilder.com/downloads/CocosBuilder-2.1.zip",
+  }
+
   class dotty($ruby_version='system') {
     $dotfiles_dir = "/Users/${::luser}/.dotty/default/dotfiles"
     $ds_store_file = "${dotfiles_dir}/dotfiles/.DS_Store"
