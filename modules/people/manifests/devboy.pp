@@ -20,6 +20,10 @@ class people::devboy {
     ensure => present
   }
 
+  package { 'git-flow':
+    ensure => present
+  }
+
   ruby::gem { "dotty for ${GLOBAL_RUBY}":
     gem     => 'dotty',
     ruby    => $GLOBAL_RUBY,
@@ -62,6 +66,9 @@ class people::devboy {
 
   # PROJECTS:
   include projects::apportable_apportable
+  include projects::wooga_apportable
+  include projects::wooga_jelly_splash_droid
+  include projects::wooga_jelly_splash_ios
   include projects::food_blog_ghost
   include projects::news_blog_ghost
 
@@ -93,6 +100,9 @@ class people::devboy {
   }
   sublime_text_3::package { 'GitGutter':
     source => 'jisaacks/GitGutter'
+  }
+  sublime_text_3::package { 'fish-shell':
+    source => 'toru-hamaguchi/sublime-fish-shell'
   }
 
   file { "/Users/${::luser}/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings":
