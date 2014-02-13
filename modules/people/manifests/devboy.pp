@@ -24,6 +24,10 @@ class people::devboy {
     ensure => present
   }
 
+  package { 'watch':
+    ensure => present
+  }
+
   ruby::gem { "dotty for ${GLOBAL_RUBY}":
     gem     => 'dotty',
     ruby    => $GLOBAL_RUBY,
@@ -76,6 +80,7 @@ class people::devboy {
   include projects::wooga_jelly_splash_ios
   include projects::food_blog_ghost
   include projects::news_blog_ghost
+  include projects::wooga_entitas
 
   # APPS:
 
