@@ -98,6 +98,8 @@ class people::devboy {
   include sublime_text_3
   include sublime_text_3::package_control
 
+  include transmission
+
   class { 'nodejs::global': 
     version => 'v0.10.21' 
   }
