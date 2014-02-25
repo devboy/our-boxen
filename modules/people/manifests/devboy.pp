@@ -114,9 +114,6 @@ class people::devboy {
   sublime_text_3::package { 'fish-shell':
     source => 'toru-hamaguchi/sublime-fish-shell'
   }
-  sublime_text_3::package { 'Handlebars':
-    source => 'daaain/Handlebars'
-  }
 
   file { "/Users/${::luser}/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings":
     ensure => 'link',
