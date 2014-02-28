@@ -139,6 +139,11 @@ GITHUBTARBALL
     spotify (1.0.1)
 
 GITHUBTARBALL
+  remote: boxen/puppet-steam
+  specs:
+    steam (1.0.1)
+
+GITHUBTARBALL
   remote: boxen/puppet-sudo
   specs:
     sudo (1.0.0)
@@ -214,6 +219,7 @@ DEPENDENCIES
   sparrow (= 1.0.0)
   spotify (= 1.0.1)
   stdlib (= 4.1.0)
+  steam (= 1.0.1)
   sublime_text_3 (= 1.0.2)
   sudo (= 1.0.0)
   transmission (= 1.1.0)
