@@ -4,6 +4,8 @@ class people::devboy {
   include git
   include java
   include vagrant
+  include mongodb
+  
   git::config::global { 'user.email':
     value  => 'dominic.graefen@gmail.com'
   }
@@ -29,6 +31,10 @@ class people::devboy {
   }
 
   package { 'leiningen':
+    ensure => present
+  }
+
+  package { 'scons':
     ensure => present
   }
 
