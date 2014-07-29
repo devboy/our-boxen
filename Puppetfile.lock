@@ -4,6 +4,11 @@ GITHUBTARBALL
     appcode2 (1.0.0)
 
 GITHUBTARBALL
+  remote: boxen/puppet-atom
+  specs:
+    atom (1.0.0)
+
+GITHUBTARBALL
   remote: boxen/puppet-boxen
   specs:
     boxen (3.3.8)
@@ -195,6 +200,7 @@ GITHUBTARBALL
 
 DEPENDENCIES
   appcode2 (= 1.0.0)
+  atom (= 1.0.0)
   boxen (= 3.3.8)
   chrome (= 1.1.2)
   dnsmasq (= 1.0.1)
