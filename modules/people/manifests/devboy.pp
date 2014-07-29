@@ -5,7 +5,7 @@ class people::devboy {
   include java
   include vagrant
   include mongodb
-  
+
   git::config::global { 'user.email':
     value  => 'dominic.graefen@gmail.com'
   }
@@ -38,50 +38,50 @@ class people::devboy {
     ensure => present
   }
 
-  ruby::gem { "dotty for ${GLOBAL_RUBY}":
-    gem     => 'dotty',
-    ruby    => $GLOBAL_RUBY,
-    version => '~> 0.0.3'
-  }
+  # ruby::gem { "dotty for ${GLOBAL_RUBY}":
+  #   gem     => 'dotty',
+  #   ruby    => $GLOBAL_RUBY,
+  #   version => '~> 0.0.3'
+  # }
 
   package { 'CocosBuilder2':
     provider => 'compressed_app',
     source   => "http://www.cocosbuilder.com/downloads/CocosBuilder-2.1.zip",
   }
 
-  class dotty($ruby_version='system') {
-    $dotfiles_dir = "/Users/${::luser}/.dotty/default/dotfiles"
-    $ds_store_file = "${dotfiles_dir}/dotfiles/.DS_Store"
-    if file_exists($ds_store_file) {
-      exec { "rm ${ds_store_file}":
-        cwd => "/Users/${luser}",
-        logoutput => on_failure,
-        provider => 'shell'; 
-      }
-    }
-    exec { "env -i HOME=\$HOME SSH_AUTH_SOCK=\$SSH_AUTH_SOCK RBENV_VERSION=${ruby_version} sh -c 'source /opt/boxen/env.sh && dotty add dotfiles git@bitbucket.org:devboy/dotfiles.git'":
-     cwd => "/Users/${luser}",
-     logoutput => on_failure,
-     provider => 'shell',
-     creates => $dotfiles_dir,
-     require => [ Class['ruby::global'], 
-                  Ruby::Gem["bundler for ${ruby_version}"], 
-                  Ruby::Gem["dotty for ${ruby_version}"] ];
-    }
-
-    exec { "env -i HOME=\$HOME SSH_AUTH_SOCK=\$SSH_AUTH_SOCK RBENV_VERSION=${ruby_version} sh -c 'source /opt/boxen/env.sh && dotty update && dotty bootstrap'":
-     cwd => "/Users/${luser}",
-     logoutput => on_failure,
-     provider => 'shell',
-     require => [ Class['ruby::global'], 
-                  Ruby::Gem["bundler for ${ruby_version}"], 
-                  Ruby::Gem["dotty for ${ruby_version}"] ];
-    }
-
-  }
-  class { "dotty":
-    ruby_version => $GLOBAL_RUBY
-  }
+  # class dotty($ruby_version='system') {
+  #   $dotfiles_dir = "/Users/${::luser}/.dotty/default/dotfiles"
+  #   $ds_store_file = "${dotfiles_dir}/dotfiles/.DS_Store"
+  #   if file_exists($ds_store_file) {
+  #     exec { "rm ${ds_store_file}":
+  #       cwd => "/Users/${luser}",
+  #       logoutput => on_failure,
+  #       provider => 'shell';
+  #     }
+  #   }
+  #   exec { "env -i HOME=\$HOME SSH_AUTH_SOCK=\$SSH_AUTH_SOCK RBENV_VERSION=${ruby_version} sh -c 'source /opt/boxen/env.sh && dotty add dotfiles git@bitbucket.org:devboy/dotfiles.git'":
+  #    cwd => "/Users/${luser}",
+  #    logoutput => on_failure,
+  #    provider => 'shell',
+  #    creates => $dotfiles_dir,
+  #    require => [ Class['ruby::global'],
+  #                 Ruby::Gem["bundler for ${ruby_version}"],
+  #                 Ruby::Gem["dotty for ${ruby_version}"] ];
+  #   }
+  #
+  #   exec { "env -i HOME=\$HOME SSH_AUTH_SOCK=\$SSH_AUTH_SOCK RBENV_VERSION=${ruby_version} sh -c 'source /opt/boxen/env.sh && dotty update && dotty bootstrap'":
+  #    cwd => "/Users/${luser}",
+  #    logoutput => on_failure,
+  #    provider => 'shell',
+  #    require => [ Class['ruby::global'],
+  #                 Ruby::Gem["bundler for ${ruby_version}"],
+  #                 Ruby::Gem["dotty for ${ruby_version}"] ];
+  #   }
+  #
+  # }
+  # class { "dotty":
+  #   ruby_version => $GLOBAL_RUBY
+  # }
 
   # PROJECTS:
   include projects::apportable_apportable
@@ -112,31 +112,31 @@ class people::devboy {
   include transmission
   include steam
 
-  class { 'nodejs::global': 
-    version => 'v0.10.21' 
+  class { 'nodejs::global':
+    version => 'v0.10.21'
   }
 
-  sublime_text_3::package { 'Theme - itg.flat':
-    source => 'itsthatguy/theme-itg-flat'
-  }
-  sublime_text_3::package { 'SublimePuppet':
-    source => 'russCloak/SublimePuppet'
-  }
-  sublime_text_3::package { 'GitGutter':
-    source => 'jisaacks/GitGutter'
-  }
-  sublime_text_3::package { 'fish-shell':
-    source => 'toru-hamaguchi/sublime-fish-shell'
-  }
-  sublime_text_3::package { 'Handlebars':
-    source => 'daaain/Handlebars'
-  }
+  # sublime_text_3::package { 'Theme - itg.flat':
+  #   source => 'itsthatguy/theme-itg-flat'
+  # }
+  # sublime_text_3::package { 'SublimePuppet':
+  #   source => 'russCloak/SublimePuppet'
+  # }
+  # sublime_text_3::package { 'GitGutter':
+  #   source => 'jisaacks/GitGutter'
+  # }
+  # sublime_text_3::package { 'fish-shell':
+  #   source => 'toru-hamaguchi/sublime-fish-shell'
+  # }
+  # sublime_text_3::package { 'Handlebars':
+  #   source => 'daaain/Handlebars'
+  # }
 
-  file { "/Users/${::luser}/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings":
-    ensure => 'link',
-    target => "/Users/${::luser}/.config/sublimetext3/Preferences.sublime-settings",
-    require => Class['dotty'];
-  }
+  # file { "/Users/${::luser}/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings":
+  #   ensure => 'link',
+  #   target => "/Users/${::luser}/.config/sublimetext3/Preferences.sublime-settings",
+  #   require => Class['dotty'];
+  # }
 
   class { 'intellij':
     edition => 'ultimate',
@@ -163,7 +163,7 @@ class people::devboy {
     domain => 'NSGlobalDomain',
     key    => 'com.apple.swipescrolldirection',
     value  => false,
-    type   => boolean,	
+    type   => boolean,
     user   => $::boxen_user;
   }
 
@@ -174,7 +174,7 @@ class people::devboy {
     value  => false,
     user   => $::boxen_user;
   }
-  
+
   boxen::osx_defaults { 'Show all file-extensions in finder':
     ensure => present,
     domain => 'NSGlobalDomain',
@@ -182,7 +182,7 @@ class people::devboy {
     value  => true,
     user   => $::boxen_user;
   }
-  
+
   boxen::osx_defaults { 'Set a blazingly fast keyboard repeat rate':
     ensure => present,
     domain => 'NSGlobalDomain',
