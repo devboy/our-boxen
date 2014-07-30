@@ -85,18 +85,33 @@ class people::devboy {
   include appcode2
 
   # OSX:
-
-  include osx::global::enable_keyboard_control_access
   include osx::dock::2d
   include osx::dock::autohide
   include osx::dock::hide_indicator_lights
-  include osx::finder::unhide_library
-  include osx::finder::show_hidden_files
-  include osx::disable_app_quarantine
-
+  include osx::dock::dim_hidden_apps
   class { 'osx::dock::icon_size':
     size => 36
   }
+  class { 'osx::dock::position':
+    position => 'bottom'
+  }
+
+  include osx::finder::unhide_library
+  include osx::finder::show_hidden_files
+
+  include osx::global::enable_keyboard_control_access
+  include osx::global::enable_standard_function_keys
+  class { 'osx::global::key_repeat_rate':
+    rate => 0.01
+  }
+
+  class { 'osx::global::key_repeat_delay':
+    delay => 10
+  }
+
+  include osx::disable_app_quarantine
+  include osx::no_network_dsstores
+  include osx::software_update
 
   boxen::osx_defaults { 'Revert back to normal scrolling':
     ensure => present,
@@ -123,23 +138,23 @@ class people::devboy {
     user   => $::boxen_user;
   }
 
-  boxen::osx_defaults { 'Set a blazingly fast keyboard repeat rate':
-    ensure => present,
-    domain => 'NSGlobalDomain',
-    key    => 'KeyRepeat',
-    value  => 0.01,
-    type   => int,
-    user   => $::boxen_user;
-  }
+  # boxen::osx_defaults { 'Set a blazingly fast keyboard repeat rate':
+  #   ensure => present,
+  #   domain => 'NSGlobalDomain',
+  #   key    => 'KeyRepeat',
+  #   value  => 0.01,
+  #   type   => int,
+  #   user   => $::boxen_user;
+  # }
 
-  boxen::osx_defaults { 'Set a blazingly fast initial keyboard repeat rate':
-    ensure => present,
-    domain => 'NSGlobalDomain',
-    key    => 'InitialKeyRepeat',
-    value  => 10,
-    type   => int,
-    user   => $::boxen_user;
-  }
+  # boxen::osx_defaults { 'Set a blazingly fast initial keyboard repeat rate':
+  #   ensure => present,
+  #   domain => 'NSGlobalDomain',
+  #   key    => 'InitialKeyRepeat',
+  #   value  => 10,
+  #   type   => int,
+  #   user   => $::boxen_user;
+  # }
 
   boxen::osx_defaults { 'Disable the warning when changing a file extenstion':
     ensure => present,
@@ -148,15 +163,6 @@ class people::devboy {
     value  => false,
     type   => bool,
     user   => $::boxen_user;
-  }
-
-  boxen::osx_defaults { 'Enable function keys':
-    ensure  => present,
-    domain  => 'NSGlobalDomain',
-    key     => 'com.apple.keyboard.fnState',
-    value   => true,
-    type    => boolean,
-    user    => $::boxen_suer;
   }
 
 }
