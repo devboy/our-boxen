@@ -56,11 +56,8 @@ class people::devboy {
   # PROJECTS:
   include projects::apportable_apportable
   include projects::wooga_apportable
-  include projects::wooga_jelly_splash_droid
-  include projects::wooga_jelly_splash_ios
-  include projects::food_blog_ghost
-  include projects::news_blog_ghost
-  # include projects::wooga_entitas
+  include projects::wooga_jellysplash
+  include projects::wooga_entitas
 
   # APPS:
 
@@ -137,24 +134,6 @@ class people::devboy {
     value  => true,
     user   => $::boxen_user;
   }
-
-  # boxen::osx_defaults { 'Set a blazingly fast keyboard repeat rate':
-  #   ensure => present,
-  #   domain => 'NSGlobalDomain',
-  #   key    => 'KeyRepeat',
-  #   value  => 0.01,
-  #   type   => int,
-  #   user   => $::boxen_user;
-  # }
-
-  # boxen::osx_defaults { 'Set a blazingly fast initial keyboard repeat rate':
-  #   ensure => present,
-  #   domain => 'NSGlobalDomain',
-  #   key    => 'InitialKeyRepeat',
-  #   value  => 10,
-  #   type   => int,
-  #   user   => $::boxen_user;
-  # }
 
   boxen::osx_defaults { 'Disable the warning when changing a file extenstion':
     ensure => present,
