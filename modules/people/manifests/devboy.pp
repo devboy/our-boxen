@@ -4,7 +4,6 @@ class people::devboy {
   include git
   include java
   include vagrant
-  include mongodb
 
   git::config::global { 'user.email':
     value  => 'dominic.graefen@gmail.com'
@@ -16,6 +15,13 @@ class people::devboy {
   $GLOBAL_RUBY = "1.9.3-p448"
   class { 'ruby::global':
     version => $GLOBAL_RUBY
+  }
+
+  class inky {
+    package { 'Inky':
+      provider  => 'pkgdmg',
+      source    => 'http://inky.com/mail/InkyInstall.dmg'
+    }
   }
 
   package { 'tree':
@@ -94,7 +100,6 @@ class people::devboy {
 
   # APPS:
 
-  include sparrow
   include virtualbox
   include chrome
   include dropbox
@@ -103,13 +108,13 @@ class people::devboy {
   include onepassword
   # include onepassword::chrome
   include skype
-  include slack
   include spotify
   include sublime_text_3
   include sublime_text_3::package_control
   include atom
   include transmission
   include steam
+  include charles
 
   # sublime_text_3::package { 'Theme - itg.flat':
   #   source => 'itsthatguy/theme-itg-flat'
