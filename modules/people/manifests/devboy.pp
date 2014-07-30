@@ -44,6 +44,10 @@ class people::devboy {
     ensure => present
   }
 
+  package { 'mackup':
+    ensure => present
+  }
+
   # ruby::gem { "dotty for ${GLOBAL_RUBY}":
   #   gem     => 'dotty',
   #   ruby    => $GLOBAL_RUBY,
