@@ -17,6 +17,11 @@ class people::devboy {
     version => $GLOBAL_RUBY
   }
 
+  exec { "defrac":
+    command   => "curl https://install.defrac.com/ | /bin/sh",
+    creates   => "/Users/${::boxen_user}/.defrac"
+  }
+
   package { 'Inky':
     provider  => appdmg,
     source    => 'http://inky.com/mail/InkyInstall.dmg',
@@ -52,6 +57,10 @@ class people::devboy {
   package { 'mackup':
     ensure => present
   }
+
+  # FONTS:
+
+  include fonts
 
   # PROJECTS:
   include projects::apportable_apportable
