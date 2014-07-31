@@ -10,7 +10,7 @@ class projects::wooga_jellysplash {
 
   boxen::project { 'wooga_jellysplash':
     dir           => "/Users/${::luser}/Development/wooga/jelly-splash",
-    ruby          => '1.9.3-p448',
+    ruby          => '2.1.2',
     source        => 'wooga/puzzle-lines-ios'
   }
 
