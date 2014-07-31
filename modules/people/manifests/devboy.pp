@@ -65,6 +65,8 @@ class people::devboy {
   # PROJECTS:
   include projects::apportable_apportable
 
+  include projects::devboy_defracgettingstarted
+
   include projects::wooga_apportable
   include projects::wooga_jellysplash
   include projects::wooga_entitas
