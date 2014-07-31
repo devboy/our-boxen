@@ -1,9 +1,4 @@
 GITHUBTARBALL
-  remote: boxen/puppet-appcode2
-  specs:
-    appcode2 (1.0.0)
-
-GITHUBTARBALL
   remote: boxen/puppet-atom
   specs:
     atom (1.0.0)
@@ -199,7 +194,6 @@ GITHUBTARBALL
     module_data (0.0.3)
 
 DEPENDENCIES
-  appcode2 (= 1.0.0)
   atom (= 1.0.0)
   boxen (= 3.6.2)
   charles (= 1.0.4)

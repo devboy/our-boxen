@@ -17,11 +17,16 @@ class people::devboy {
     version => $GLOBAL_RUBY
   }
 
-  class inky {
-    package { 'Inky':
-      provider  => 'pkgdmg',
-      source    => 'http://inky.com/mail/InkyInstall.dmg'
-    }
+  package { 'Inky':
+    provider  => appdmg,
+    source    => 'http://inky.com/mail/InkyInstall.dmg',
+    ensure    => present
+  }
+
+  package { 'AppCode':
+    provider  => appdmg,
+    source    => 'http://download.jetbrains.com/objc/AppCode-3.0.3.dmg',
+    ensure    => present
   }
 
   package { 'tree':
@@ -48,14 +53,9 @@ class people::devboy {
     ensure => present
   }
 
-  package { 'CocosBuilder2':
-    provider => 'compressed_app',
-    source   => "http://www.cocosbuilder.com/downloads/CocosBuilder-2.1.zip",
-  }
-
   # PROJECTS:
   include projects::apportable_apportable
-  
+
   include projects::wooga_apportable
   include projects::wooga_jellysplash
   include projects::wooga_entitas
@@ -70,7 +70,7 @@ class people::devboy {
   include vlc
   include onepassword
   include skype
-  include spotify
+  # include spotify
   include atom
   include transmission
   include steam
@@ -81,7 +81,6 @@ class people::devboy {
     edition => 'ultimate',
     version => '13.1.4'
   }
-  include appcode2
 
   # OSX:
   include osx::dock::2d
