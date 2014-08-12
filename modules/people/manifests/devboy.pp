@@ -64,8 +64,10 @@ class people::devboy {
 
   # PROJECTS:
   include projects::apportable_apportable
+  include projects::apportable_corefoundation
 
   include projects::devboy_defracgettingstarted
+  include projects::devboy_emscripten
 
   include projects::wooga_apportable
   include projects::wooga_jellysplash
