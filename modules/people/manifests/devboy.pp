@@ -34,10 +34,14 @@ class people::devboy {
   }
 
   package { 'scons':
-    ensure => present
+    ensure => presents
   }
 
   package { 'mackup':
+    ensure => present
+  }
+
+  package { 'mono':
     ensure => present
   }
 
@@ -47,15 +51,16 @@ class people::devboy {
 
   # APPS:
 
-  #include chrome
-  #include dropbox
-  #include iterm2::dev
+  include chrome
+  include dropbox
+  include iterm2::dev
 
-  #include onepassword
-  #include skype
+  include onepassword
+  include skype
   #include spotify
-  #include atom
+  include atom
   # include charles
+  #include slack
 
   # OSX:
   include osx::dock::2d
