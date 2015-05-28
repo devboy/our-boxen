@@ -60,7 +60,6 @@ class people::devboy {
   #include spotify
   include atom
   # include charles
-  #include slack
 
   # OSX:
   include osx::dock::2d
