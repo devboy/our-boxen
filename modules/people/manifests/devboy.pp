@@ -2,8 +2,8 @@ class people::devboy {
   # DEFAULTS:
   include fish
   include git
-  include java
-  include vagrant
+  # include java
+  # include vagrant
 
   git::config::global { 'user.email':
     value  => 'dominic.graefen@gmail.com'
@@ -15,23 +15,6 @@ class people::devboy {
   $GLOBAL_RUBY = "1.9.3-p448"
   class { 'ruby::global':
     version => $GLOBAL_RUBY
-  }
-
-  exec { "defrac":
-    command   => "curl https://install.defrac.com/ | /bin/sh",
-    creates   => "/Users/${::boxen_user}/.defrac"
-  }
-
-  package { 'Inky':
-    provider  => appdmg,
-    source    => 'http://inky.com/mail/InkyInstall.dmg',
-    ensure    => present
-  }
-
-  package { 'AppCode':
-    provider  => appdmg,
-    source    => 'http://download.jetbrains.com/objc/AppCode-3.0.3.dmg',
-    ensure    => present
   }
 
   package { 'tree':
@@ -64,24 +47,15 @@ class people::devboy {
 
   # APPS:
 
-  include virtualbox
-  include chrome
-  include dropbox
-  include iterm2::dev
-  include vlc
-  include onepassword
-  include skype
-  # include spotify
-  include atom
-  include transmission
-  include steam
-  include charles
-  include slate
+  #include chrome
+  #include dropbox
+  #include iterm2::dev
 
-  class { 'intellij':
-    edition => 'ultimate',
-    version => '13.1.4'
-  }
+  #include onepassword
+  #include skype
+  #include spotify
+  #include atom
+  # include charles
 
   # OSX:
   include osx::dock::2d
