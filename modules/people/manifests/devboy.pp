@@ -59,6 +59,7 @@ class people::devboy {
   include skype
   #include spotify
   include atom
+  include parallels
   # include charles
 
   # OSX:

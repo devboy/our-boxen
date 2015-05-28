@@ -104,6 +104,11 @@ GITHUBTARBALL
     osx (2.8.0)
 
 GITHUBTARBALL
+  remote: boxen/puppet-parallels
+  specs:
+    parallels (1.1.1)
+
+GITHUBTARBALL
   remote: boxen/puppet-phantomjs
   specs:
     phantomjs (2.4.0)
@@ -127,11 +132,6 @@ GITHUBTARBALL
   remote: boxen/puppet-skype
   specs:
     skype (1.1.0)
-
-GITHUBTARBALL
-  remote: boxen/puppet-slack
-  specs:
-    slack (1.0.6)
 
 GITHUBTARBALL
   remote: boxen/puppet-sudo
@@ -187,12 +187,12 @@ DEPENDENCIES
   onepassword (= 1.1.5)
   openssl (= 1.0.0)
   osx (= 2.8.0)
+  parallels (= 1.1.1)
   phantomjs (= 2.4.0)
   pkgconfig (= 1.0.0)
   repository (= 2.4.1)
   ruby (= 8.5.2)
   skype (= 1.1.0)
-  slack (= 1.0.6)
   stdlib (= 4.2.1)
   sudo (= 1.0.0)
   vagrant (= 3.3.0)
