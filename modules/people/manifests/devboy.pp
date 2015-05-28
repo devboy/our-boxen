@@ -62,22 +62,6 @@ class people::devboy {
 
   include fonts
 
-  # PROJECTS:
-  include projects::apportable_apportable
-  include projects::apportable_corefoundation
-
-  include projects::devboy_defracgettingstarted
-  include projects::devboy_emscripten
-
-  include projects::wooga_apportable
-  include projects::wooga_jellysplash
-  include projects::wooga_entitas
-  include projects::wooga_ads
-  include projects::wooga_sbs-ios
-  include projects::wooga_sbs-unity
-  include projects::wooga_sbs-flash
-  include projects::wooga_sbs-js
-
   # APPS:
 
   include virtualbox
