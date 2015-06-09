@@ -12,9 +12,17 @@ class people::devboy {
   # RUBY:
 
   include ruby
-  $GLOBAL_RUBY = "1.9.3-p448"
+  $GLOBAL_RUBY = "2.2.2"
   class { 'ruby::global':
     version => $GLOBAL_RUBY
+  }
+
+  package { 'htop'
+    ensure => present
+  }
+
+  package { 'tmux'
+    ensure => present
   }
 
   package { 'tree':
