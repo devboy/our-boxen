@@ -68,7 +68,6 @@ node default {
 
   # default ruby versions
   ruby::version { '1.9.3': }
-  ruby::version { '2.2.2': }
 
   # common, useful packages
   package {

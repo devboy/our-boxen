@@ -17,11 +17,11 @@ class people::devboy {
     version => $GLOBAL_RUBY
   }
 
-  package { 'htop'
+  package { 'htop':
     ensure => present
   }
 
-  package { 'tmux'
+  package { 'tmux':
     ensure => present
   }
 
@@ -39,10 +39,6 @@ class people::devboy {
 
   package { 'leiningen':
     ensure => present
-  }
-
-  package { 'scons':
-    ensure => presents
   }
 
   package { 'mackup':
